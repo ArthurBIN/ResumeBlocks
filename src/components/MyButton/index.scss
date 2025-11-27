@@ -1,0 +1,63 @@
+.my-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    white-space: nowrap;
+
+    &:active:not(.my-button--disabled) {
+        transform: scale(0.98);
+    }
+
+    &--small {
+        padding: 8px 16px;
+        font-size: 12px;
+        border-radius: 2px;
+
+        .my-button__icon {
+            font-size: 16px;
+        }
+    }
+
+    &--medium {
+        padding: 12px 20px;
+        font-size: 14px;
+
+        .my-button__icon {
+            font-size: 18px;
+        }
+    }
+
+    &--large {
+        padding: 16px 32px;
+        font-size: 16px;
+        border-radius: 4px;
+
+        .my-button__icon {
+            font-size: 22px;
+        }
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+
+    &__text {
+        line-height: 1;
+    }
+}

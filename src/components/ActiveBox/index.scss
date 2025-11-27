@@ -1,0 +1,19 @@
+.ActiceBox {
+    animation: box_active 0.3s ease;
+}
+
+@keyframes box_active {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,68 @@
+.MyInput {
+    // 布局
+    display: flex;
+    height: 2.25rem; // h-9 = 36px
+    width: 100%;
+    flex: 1;
+
+    // 边框和背景
+    border-radius: 0.25rem; // rounded
+    border: 1px solid #e5e7eb;
+    background-color: transparent;
+
+    // 内边距
+    padding: 0.125rem 0.75rem; // py-0.5 px-3
+
+    // 文字
+    font-size: 0.875rem !important; // !text-sm
+
+    // 环形效果
+    outline: none;
+    outline-offset: 0;
+
+    // 过渡动画
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+    // 占位符样式
+    &::placeholder {
+        opacity: 0.8;
+    }
+
+    // hover 状态
+    &:hover {
+        background-color: rgba(240, 240, 240, 0.2);
+    }
+
+    // focus 状态
+    &:focus {
+        border-color: #4C4C4E;
+        background-color: rgba(240, 240, 240, 0.2);
+        outline: none;
+    }
+
+    // 禁用状态
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    // 移除数字输入框的上下箭头
+    appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        appearance: none;
+    }
+
+    // 文件上传按钮样式
+    // &::file-selector-button {
+    //     border: 0;
+    //     background-color: transparent;
+    //     padding-top: 0.25rem;
+    //     font-size: 0.875rem;
+    //     font-weight: 500;
+    //     color: var(--primary-color, #3b82f6);
+    // }
+}

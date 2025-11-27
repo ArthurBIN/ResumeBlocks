@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import './index.scss'
 import { FileTextOutlined, SettingOutlined } from "@ant-design/icons";
-
+import { GlowCard } from "@/components/GlowCard";
 
 
 export const Dashboard = () => {
@@ -16,20 +16,22 @@ export const Dashboard = () => {
                 <div className="Logo">简历积木</div>
                 <div className="divide"></div>
                 <div className="btnBox">
-                    <div
+                    <GlowCard
                         onClick={() => navigate('/dashboard/resumes')}
+                        isShow={location.pathname !== '/dashboard/resumes'}
                         className={`btnItem ${location.pathname === '/dashboard/resumes' ? 'activeBtnItem' : 'noactiveBtnItem'}`}
                     >
                         <FileTextOutlined />
                         <span>简历</span>
-                    </div>
-                    <div
+                    </GlowCard>
+                    <GlowCard
                         onClick={() => navigate('/dashboard/settings')}
+                        isShow={location.pathname !== '/dashboard/settings'}
                         className={`btnItem ${location.pathname === '/dashboard/settings' ? 'activeBtnItem' : 'noactiveBtnItem'}`}
                     >
                         <SettingOutlined />
                         <span>设置</span>
-                    </div>
+                    </GlowCard>
                 </div>
             </aside>
             <main>

@@ -1,0 +1,75 @@
+.Resumes {
+    .ContentBox {
+        width: 100%;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 30px;
+
+        @media (max-width: 1480px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 1280px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .ContentBoxItem {
+            width: 100%;
+            position: relative;
+            aspect-ratio: 1 / 1.414;
+            background: #F3F4F6;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            opacity: 0;
+            animation: box_active 0.3s ease forwards;
+            cursor: pointer;
+        }
+
+        @keyframes box_active {
+            0% {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .ContentBoxItem1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 60px;
+
+            img {
+                width: 50px;
+            }
+
+            &_text {
+                font-size: 14px;
+                margin-top: 30px;
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+
+                p:nth-child(2) {
+                    font-size: 12px;
+                    margin-top: 3px;
+                }
+            }
+        }
+    }
+
+    .titleInput {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,36 @@
+.glow-card {
+    position: relative;
+    overflow: hidden;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --glow-size: 180px;
+    --glow-color: 255, 255, 255;
+    --glow-intensity: 0.8;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle var(--glow-size) at var(--mouse-x) var(--mouse-y),
+                rgba(var(--glow-color), var(--glow-intensity)),
+                rgba(var(--glow-color), calc(var(--glow-intensity) * 0.5)) 30%,
+                rgba(var(--glow-color), calc(var(--glow-intensity) * 0.15)) 50%,
+                transparent 70%);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    >* {
+        position: relative;
+        z-index: 2;
+    }
+}
