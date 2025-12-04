@@ -24,6 +24,27 @@
             opacity: 0;
             animation: box_active 0.3s ease forwards;
             cursor: pointer;
+
+            &_Modify {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+                opacity: 0;
+                z-index: 99;
+                transition: all 0.3s ease;
+            }
+
+            &_Modify:hover {
+                opacity: 1;
+            }
         }
 
         @keyframes box_active {

@@ -10,6 +10,7 @@ interface ModalProps {
     children: React.ReactNode;
     buttonText?: string;
     loading?: boolean;
+    buttonColor?: string;
     onButtonClick?: () => void;
     showButton?: boolean;
 }
@@ -22,6 +23,7 @@ export const Modal = ({
     children,
     buttonText = '确定',
     loading = false,
+    buttonColor = '#000000',
     onButtonClick,
     showButton = true
 }: ModalProps) => {
@@ -90,6 +92,7 @@ export const Modal = ({
                             onClick={handleButtonClick}
                             disabled={loading}
                             loading={loading}
+                            backgroundColor={buttonColor}
                         >
                             {buttonText}
                         </MyButton>

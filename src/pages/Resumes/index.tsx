@@ -9,27 +9,37 @@ import { message } from 'antd';
 import { createEmptyResume, getMyResumes } from "@/lib/api/resumes";
 import type { Resume } from "@/types/resumes";
 import { formatRelativeTime } from '@/utils/formatTime';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined, FolderOpenOutlined, DeleteOutlined } from '@ant-design/icons';
+import { MyButton } from "@/components/MyButton";
 
 export const Resumes = () => {
     useEffect(() => {
         document.title = "简历 - 简历积木";
     }, []);
 
+    // 加载简历内容
     const [isLoading, setIsLoading] = useState(true);
 
     const [messageApi, contextHolder] = message.useMessage();
 
+    // 简历内容
     const [myResumes, setMyResumes] = useState<Resume[]>([]);
 
+    // 控制新建简历弹窗显示
     const [isAddModal, setIsAddModal] = useState(false);
 
+    // 新增简历按钮loading
     const [addLoading, setAddLoading] = useState(false);
 
+    // 新增简历标题
     const [titleText, setTitleText] = useState('');
+
+    // 控制删除简历弹窗显示
+    const [isDelModal, setIsDelModal] = useState(false)
 
     const inputRef = useRef<HTMLInputElement>(null);
 
+    // 获取简历
     const fetchMyResumes = async () => {
         try {
             setIsLoading(true);
@@ -57,6 +67,7 @@ export const Resumes = () => {
         }
     }, [isAddModal]);
 
+    // 新建简历
     const handleCreateResume = async () => {
         if (!titleText.trim()) {
             messageApi.open({
@@ -84,6 +95,11 @@ export const Resumes = () => {
                 content: `创建简历失败: ${error}`,
             });
         }
+    }
+
+    const handleDelResume = () => {
+        console.log(1);
+
     }
 
     return (
@@ -124,12 +140,43 @@ export const Resumes = () => {
                                     最后更新：{formatRelativeTime(item.updated_at)}
                                 </p>
                             </div>
+                            <div className="ContentBoxItem_Modify">
+                                <MyButton
+                                    size="small"
+                                    onClick={() => { }}
+                                    icon={<FolderOpenOutlined />}
+                                >
+                                    打开
+                                </MyButton>
+                                <MyButton
+                                    size="small"
+                                    onClick={() => setIsDelModal(true)}
+                                    icon={<DeleteOutlined />}
+                                    backgroundColor="#F42F5C"
+                                >
+                                    删除
+                                </MyButton>
+                            </div>
                         </GlowCard>
                     ))}
                 </div>
             )}
 
 
+            <Modal
+                isOpen={isDelModal}
+                onClose={() => { setIsDelModal(false) }}
+                title="删除简历"
+                titleIcon={<DeleteOutlined />}
+                buttonText="删除"
+                loading={addLoading}
+                buttonColor="#F42F5C"
+                onButtonClick={handleDelResume}
+            >
+                确认删除此简历？
+            </Modal>
+
+            {/* 新增简历弹窗 */}
             <Modal
                 isOpen={isAddModal}
                 onClose={() => { setIsAddModal(false); setTitleText('') }}
